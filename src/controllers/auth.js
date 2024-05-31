@@ -86,14 +86,14 @@ const tokenRenew = async ( req, res = response ) => {
 
   const uid  = req.uid;
 
-  const newJwt = await jwtGenerate( uid );
+  const token = await jwtGenerate( uid );
 
-  const userMatchInDb = User.findById(uid);
+  const userMatchInDb = await User.findById(uid);
 
   res.json({
     ok: true,
     user: userMatchInDb,
-    newJwt
+    token
   });
 
 };
