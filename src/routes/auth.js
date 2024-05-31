@@ -1,4 +1,4 @@
-// path: api/login
+// path: /api/login
 const { Router } = require("express");
 const { check } = require("express-validator");
 const { userCreate, login, tokenRenew } = require("../controllers/auth");
@@ -10,15 +10,15 @@ const router = Router();
 router.post(
   "/new",
   [
-    check("name", "The name is required").not().isEmpty(),
-    check("email", "The email is required").not().isEmpty(),
-    check("password", "The password is required").not().isEmpty(),
+    check("name", "El nombre es requerido").not().isEmpty(),
+    check("email", "El email es requerido").not().isEmpty(),
+    check("password", "La contraseña es requerida").not().isEmpty(),
     validateFields,
   ], userCreate);
 
 router.post('/', [
-  check("email", "The email is required").not().isEmpty(),
-  check("password", "The password is required").not().isEmpty(),
+  check("email", "El email es requerido").not().isEmpty(),
+  check("password", "La contraseña es requerida").not().isEmpty(),
   validateFields,
 ], login);
 
